@@ -169,6 +169,8 @@ void InsertAtPos(PPNODE First ,int iNo, int iPos)
 void DeleteAtPos(PPNODE First , int iPos)
 {
     int iLength = 0;
+    int i = 0;
+    PNODE temp = NULL;
     iLength = Count(*First);
 
     if((iPos < 1) || (iPos > iLength))
@@ -186,7 +188,10 @@ void DeleteAtPos(PPNODE First , int iPos)
     }
     else
     {
-        
+        for(i = 1; i<=iPos;i++)
+        {
+            temp = temp->next;
+        }
     }
 }
 
