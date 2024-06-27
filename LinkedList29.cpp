@@ -212,8 +212,7 @@ void SinglyLL::DeleteAtPos(int iPos)
         temp2 = temp1->next;
         temp1->next = temp2->next;
         delete temp2;
-    
-
+        iCount--;
     }
 }
 
@@ -241,6 +240,12 @@ int main()
 
 
     obj.InsertAtPos(105,5);
+
+    obj.Display();
+    iRet = obj.Count();
+    cout<<"Number of Elements are :"<<iRet<<endl;
+
+    obj.DeleteAtPos(5);
 
     obj.Display();
     iRet = obj.Count();
