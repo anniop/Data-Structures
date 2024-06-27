@@ -13,20 +13,6 @@ struct node
 };
 
 
-int Count(PNODE First)
-{
-    int iCnt = 0;
-    while(First != NULL)
-    {
-        
-        First = First->next;
-        iCnt++;
-    }
-    return iCnt;
-}
-
- 
-
 void InsertFirst(PPNODE First, int iNo)
 {
     PNODE newn = NULL;
@@ -51,7 +37,46 @@ void InsertFirst(PPNODE First, int iNo)
     
 } 
 
+void InsertLast(PPNODE First, int iNo)
+{
+    PNODE newn = NULL;
+    PNODE temp = NULL;
+    
+    newn = (PNODE)malloc(sizeof(NODE));
 
+    newn->data = iNo;
+    newn->next = NULL;
+    newn->prev = NULL;     //$
+
+
+    if(*First == NULL)
+    {
+        *First = newn;
+    }
+    else
+    {
+       temp = *First;
+       while(temp -> next != NULL )
+       {
+            temp = temp -> next;
+       }
+       temp -> next = newn;
+       newn->prev = temp;      //$
+    }
+    
+}  
+
+int Count(PNODE First)
+{
+    int iCnt = 0;
+    while(First != NULL)
+    {
+        
+        First = First->next;
+        iCnt++;
+    }
+    return iCnt;
+}
 
 void Display(PNODE First)
 {
@@ -77,6 +102,11 @@ int main()
     InsertFirst(&Head,8);
     InsertFirst(&Head,4);
     InsertFirst(&Head,12);
+
+    InsertLast(&Head,23);
+    InsertLast(&Head,33);
+    InsertLast(&Head,43);
+
 
     Display(Head);
     iRet = Count(Head);
