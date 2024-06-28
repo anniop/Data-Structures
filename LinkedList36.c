@@ -58,17 +58,17 @@ void InsertLast(PPNODE First, PPNODE Last, int iNo)
 void DeleteFirst(PPNODE First, PPNODE Last)
 {
 
-    if((*First == NULL) && (*Last == NULL) )
+    if((*First == NULL) && (*Last == NULL) )    // Empty Linked List
     {
         return; 
     }
-    else if(*First == *Last)
+    else if(*First == *Last)    // Single Node
     {
         free(*First);
         *First = NULL;
         *Last = NULL;
     }
-    else
+    else    // Multiple Nodes
     {
         *First = (*First)->next;
         free((*Last)->next);
