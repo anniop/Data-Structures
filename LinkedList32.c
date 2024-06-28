@@ -33,6 +33,28 @@ void InsertFirst(PPNODE First, PPNODE Last, int iNo)
     (*Last)->next = *First;
 }
 
+void InsertLast(PPNODE First, PPNODE Last, int iNo)
+{
+    PNODE newn = NULL;
+
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn->data = iNo;
+    newn->next = NULL;
+
+    if((*First == NULL) && (*Last == NULL) )
+    {
+        *First = newn;  
+        *Last = newn;   
+    }
+    else
+    {
+        (*Last)->next = newn;
+        *Last = newn;
+    }
+    (*Last)->next = *First;
+}
+
 int main()
 {
     
@@ -42,6 +64,10 @@ int main()
     InsertFirst(&Head,&Tail,51);
     InsertFirst(&Head,&Tail,21);
     InsertFirst(&Head,&Tail,11);
+
+    InsertLast(&Head,&Tail,101);
+    InsertLast(&Head,&Tail,111);
+    InsertLast(&Head,&Tail,121);
     
     return 0;
 }
