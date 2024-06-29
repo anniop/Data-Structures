@@ -39,12 +39,10 @@ SinglyCL::SinglyCL()
     iCount = 0;
 }
 
-
-
 int main()
 {
-    
     SinglyCL obj;
+    
     
     return 0;
 }
