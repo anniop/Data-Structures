@@ -10,30 +10,30 @@ struct node
 typedef struct node NODE;
 typedef struct node* PNODE;
 
-class Stack
+class Queue
 {
     private:
         PNODE First;
         int iCount;
 
     public:
-        Stack();
+        Queue();
         void Display();
         int Count();
-        void Push(int iNo);    // InsertFirst()
-        int Pop();      // DeleteFirst()
+        void EnQueue(int iNo);    // InsertLast()
+        int DeQueue();      // DeleteFirst()
 };
 
-Stack :: Stack()
+Queue :: Queue()
 {
     First = NULL;
     iCount = 0;
 }
 
 
-void Stack :: Display()
+void Queue :: Display()
 {
-    cout<<"Elements in the stack are : \n";
+    cout<<"Elements in the Queue are : \n";
     PNODE temp = First;
 
     while(temp != NULL)
@@ -44,14 +44,15 @@ void Stack :: Display()
     cout<<"\n";
 }
 
-int Stack :: Count()
+int Queue :: Count()
 {
     return iCount;
 }
 
-void Stack :: Push(int iNo)   
+void Queue :: EnQueue(int iNo)   
 {
     PNODE newn = NULL;
+    PNODE temp = NULL;
 
     newn = new NODE;
 
@@ -64,20 +65,24 @@ void Stack :: Push(int iNo)
     }
     else
     {
-        newn->next = First;
-        First = newn;
+        temp = First;
+        while(temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newn;
     }
     iCount++;
 }
 
-int Stack :: Pop()
+int Queue :: DeQueue()
 {
     int iValue = 0;
     PNODE temp = NULL;
 
     if(First == NULL)
     {
-        cout<<"Unable to pop the element as stack is empty\n";
+        cout<<"Unable to Remove the element as Queue is empty\n";
         return -1;
     }
     else
@@ -96,37 +101,37 @@ int Stack :: Pop()
 int main()
 {
     
-    Stack obj;
+    Queue obj;
     int iRet = 0;
-    cout<<"Elements in stack are : \n";
-    obj.Push(10);
-    obj.Push(20);
-    obj.Push(30);
-    obj.Push(40);
-
-    obj.Display();
-
-    iRet = obj.Count();
-    cout<<"Number of Elemements are : "<<iRet<<"\n";
-
-    iRet = obj.Pop();
-
-    cout<<"Poped Element is : "<<iRet<<"\n";
     
-    iRet = obj.Pop();
-
-    cout<<"Poped Element is : "<<iRet<<"\n";
+    obj.EnQueue(10);
+    obj.EnQueue(20);
+    obj.EnQueue(30);
+    obj.EnQueue(40);
 
     obj.Display();
 
     iRet = obj.Count();
     cout<<"Number of Elemements are : "<<iRet<<"\n";
 
-    obj.Push(50);
+    iRet = obj.DeQueue();
+
+    cout<<"Removed Element is : "<<iRet<<"\n";
+    
+    iRet = obj.DeQueue();
+
+    cout<<"Removed Element is : "<<iRet<<"\n";
+
     obj.Display();
 
     iRet = obj.Count();
-    cout<<"Number of Elemements are : "<<iRet<<"\n";
+    cout<<"Number of Elemements in the queue are : "<<iRet<<"\n";
+
+    obj.EnQueue(50);
+    obj.Display();
+
+    iRet = obj.Count();
+    cout<<"Number of Elemements in the queue are : "<<iRet<<"\n";
 
 
     return 0;
