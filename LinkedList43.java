@@ -92,19 +92,16 @@ class SinglyLL
 
     public void DeleteFirst()
     {
-        if(First == null)
-        {
-            System.out.println("The Linked list is empty");
-        }
-        else
+        if(First != null)
         {
             First = First.next;
+            iCount--;
         }
-        iCount--;
+       
     }
 }
 
-class LinkedList42 
+class LinkedList43 
 {
     public static void main(String Google[])
     {

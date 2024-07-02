@@ -2,6 +2,12 @@ class node
 {
     public int data;
     public  node next;
+
+    public node(int iValue)
+    {
+        data = iValue;
+        next = null;
+    }
 }
 /*
 struct node 
@@ -27,10 +33,9 @@ class SinglyLL
     {
         node newn = null;
 
-        newn = new node();
+        newn = new node(iNo);
 
-        newn.data = iNo;
-        newn.next = null;
+        
 
         if(First == null)
         {
@@ -55,18 +60,17 @@ class SinglyLL
             System.out.print("| "+temp.data+" |->");
             temp = temp.next;
         }
-        System.out.println("null        ");
+        System.out.println("null");
     }
 
     public void InserLast(int iNo)
     {
         node newn = null;
 
-        newn = new node();
+        newn = new node(iNo);
         node temp = null;
 
-        newn.data = iNo;
-        newn.next = null;
+        
 
         if(First == null)
         {
@@ -102,9 +106,27 @@ class SinglyLL
         }
         iCount--;
     }
+
+    public void DeleteLast()
+    {
+        node temp = First;
+        if(First == null)
+        {
+            System.out.println("The Linked list is empty");
+        }
+        else
+        {
+            while(temp.next.next != null)
+            {
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+        iCount--;
+    }
 }
 
-class LinkedList42 
+class LinkedList45 
 {
     public static void main(String Google[])
     {
@@ -131,6 +153,12 @@ class LinkedList42
         System.out.println("The Number of elements in the Linked List are : " + iRet);
 
         obj.DeleteFirst();
+        obj.Display();
+
+        iRet = obj.Count();
+        System.out.println("The Number of elements in the Linked List are : " + iRet);
+
+        obj.DeleteLast();
         obj.Display();
 
         iRet = obj.Count();

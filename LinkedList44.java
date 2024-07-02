@@ -102,9 +102,27 @@ class SinglyLL
         }
         iCount--;
     }
+
+    public void DeleteLast()
+    {
+        node temp = First;
+        if(First == null)
+        {
+            System.out.println("The Linked list is empty");
+        }
+        else
+        {
+            while(temp.next.next != null)
+            {
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+        iCount--;
+    }
 }
 
-class LinkedList42 
+class LinkedList44 
 {
     public static void main(String Google[])
     {
@@ -131,6 +149,12 @@ class LinkedList42
         System.out.println("The Number of elements in the Linked List are : " + iRet);
 
         obj.DeleteFirst();
+        obj.Display();
+
+        iRet = obj.Count();
+        System.out.println("The Number of elements in the Linked List are : " + iRet);
+
+        obj.DeleteLast();
         obj.Display();
 
         iRet = obj.Count();

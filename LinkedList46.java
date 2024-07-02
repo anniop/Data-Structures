@@ -2,6 +2,12 @@ class node
 {
     public int data;
     public  node next;
+
+    public node(int iValue)
+    {
+        data = iValue;
+        next = null;
+    }
 }
 /*
 struct node 
@@ -27,10 +33,9 @@ class SinglyLL
     {
         node newn = null;
 
-        newn = new node();
+        newn = new node(iNo);
 
-        newn.data = iNo;
-        newn.next = null;
+        
 
         if(First == null)
         {
@@ -55,18 +60,17 @@ class SinglyLL
             System.out.print("| "+temp.data+" |->");
             temp = temp.next;
         }
-        System.out.println("null        ");
+        System.out.println("null");
     }
 
-    public void InserLast(int iNo)
+    public void InsertLast(int iNo)
     {
         node newn = null;
 
-        newn = new node();
+        newn = new node(iNo);
         node temp = null;
 
-        newn.data = iNo;
-        newn.next = null;
+        
 
         if(First == null)
         {
@@ -102,9 +106,62 @@ class SinglyLL
         }
         iCount--;
     }
+
+    public void DeleteLast()
+    {
+        node temp = First;
+        if(First == null)
+        {
+            System.out.println("The Linked list is empty");
+        }
+        else
+        {
+            while(temp.next.next != null)
+            {
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+        iCount--;
+    }
+
+    public void InsertAtPos(int iNo,int iPos)
+    {
+        int i = 0;
+        node newn = null;
+        if((iPos < 1) || (iPos > iCount+1))
+        {
+            System.out.println("Invalid Position");
+        }
+        else if(iPos == 1)
+        {
+            InsertFirst(iNo);
+        }
+        else if(iPos == iCount+1)
+        {
+            InsertLast(iNo);
+        }
+        else
+        {
+            node temp = First;
+           newn = new node(iNo);
+           newn.data = iNo;
+           newn.next = null;
+
+           for(i =1 ;i< iPos-1;i++)
+           {
+                temp = temp.next;
+           }
+
+           newn.next = temp.next;
+           temp.next = newn; 
+           iCount++;  
+        }
+       
+    }
 }
 
-class LinkedList42 
+class LinkedList46 
 {
     public static void main(String Google[])
     {
@@ -121,9 +178,9 @@ class LinkedList42
         iRet = obj.Count();
         System.out.println("The Number of elements in the Linked List are : " + iRet);
 
-        obj.InserLast(151);
-        obj.InserLast(111);
-        obj.InserLast(201);
+        obj.InsertLast(151);
+        obj.InsertLast(111);
+        obj.InsertLast(201);
 
         obj.Display();
 
@@ -135,5 +192,19 @@ class LinkedList42
 
         iRet = obj.Count();
         System.out.println("The Number of elements in the Linked List are : " + iRet);
+
+        obj.DeleteLast();
+        obj.Display();
+
+        iRet = obj.Count();
+        System.out.println("The Number of elements in the Linked List are : " + iRet);
+
+        obj.InsertAtPos(105, 5);
+        obj.Display();
+
+        iRet = obj.Count();
+        System.out.println("The Number of elements in the Linked List are : " + iRet);
+
+
     }    
 }
