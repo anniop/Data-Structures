@@ -1,5 +1,11 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "bit": "cpp",
+        "compare": "cpp",
+        "type_traits": "cpp",
+        "cmath": "cpp",
+        "limits": "cpp",
+        "utility": "cpp"
     }
 }
