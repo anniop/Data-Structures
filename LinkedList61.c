@@ -73,8 +73,9 @@ void Display(PNODE First)
 {
     if(First != NULL)
     {
+        Display(First->next);       // Head Recurssion (if recursive call is first then it is head recurssion and if the call is at the end of the fucntion then it is tail recurssion)
         printf("%d\t",First->data);
-        Display(First->next);
+        
     }
 }
 
@@ -153,31 +154,7 @@ int main()
 
     Display(Head);
 
-    iRet = Count(Head);
-    printf("\n");
-    printf("Number of Nodes are : %d\n",iRet);
-
-    printf("\n");
-    printf("Deleting First Node\n");
-
-    DeleteFirst(&Head);
-
-    Display(Head);
-
-    iRet = Count(Head);
-    printf("\n");
-    printf("Number of Nodes are : %d\n",iRet);
-
-    printf("Deleteing Last Node\n");
-
-    printf("\n");
-    DeleteLast(&Head);
-
-    Display(Head);
-
-    iRet = Count(Head);
-    printf("\n");
-    printf("Number of Nodes are : %d\n",iRet);
+   
 
     return 0;
 }
