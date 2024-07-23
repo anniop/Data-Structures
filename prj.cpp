@@ -494,6 +494,13 @@ void DoublyCL<T>::DeleteAtPos(int iPos)
 // Code of Doubly Linear
 //
 ////////////////////////////////////////
+template <class T>
+struct node
+{
+    T data;
+    struct node *prev;
+    struct node *next;
+};
 
 
 
